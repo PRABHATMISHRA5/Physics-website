@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Physics by Nishant Mishra</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .whatsapp-footer {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+            animation: slideInright 1s ease-out;
+        }
+
+        .whatsapp-footer a {
+            display: inline-block;
+            background-color: #25D366;
+            padding: 12px;
+            border-radius: 50%;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-footer a:hover {
+            transform: scale(1.15);
+        }
+
+        .whatsapp-footer img {
+            width: 30px;
+            height: 30px;
+        }
+
+@keyframes slideInright {
+            0% {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            padding: 16px;
+            margin-bottom: 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .concept-text {
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .max-h-0 {
+            max-height: 0;
+        }
+        .max-h-40 {
+            max-height: 160px;
+            /* adjust as needed */
+        }
+        .toggle-btn {
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 12px;
+            color: blue;
+        }
+        .toggle-btn i {
+            display: inline-block;
+            transition: transform 0.3s ease;
+
+        </style>
+    </head>
+    <body class="bg-white text-gray-900 font-sans">
+
+        <!-- Header -->
+        <header class="flex items-center justify-between px-6 py-4 shadow-lg bg-white sticky top-0 z-50">
+            <div class="text-2xl font-bold text-blue-700">
+                Nishantmishra
+            </div>
+            <button id="menu-btn" class="block md:hidden">
+                <svg class="w-7 h-7 text-blue-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+            <nav id="menu" class="hidden md:flex space-x-6 text-sm font-medium text-gray-600">
+                <a href="#home" class="hover:text-blue-600 transition">Home</a>
+                <a href="#blog" class="hover:text-blue-600 transition">Blog</a>
+                <a href="#physics" class="hover:text-blue-600 transition">Physics</a>
+                <a href="#store" class="hover:text-blue-600 transition">Store</a>
+            </nav>
+        </header>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden max-h-0 overflow-hidden flex-col space-y-3 px-6 py-0 bg-blue-50 shadow-inner transition-all duration-300 ease-in-out">
+            <a href="#home" class="text-gray-700 hover:text-blue-700 transition">Home</a>
+            <a href="#blog" class="text-gray-700 hover:text-blue-700 transition">Blog</a>
+            <a href="#physics" class="text-gray-700 hover:text-blue-700 transition">Physics</a>
+            <a href="#store" class="text-gray-700 hover:text-blue-700 transition">Store</a>
+        </div>
+
+        <!-- Home with background image -->
+        <section id="home" class="relative h-screen flex flex-col items-center justify-center text-center bg-transparent mt-4 mx-4 rounded-lg shadow overflow-hidden">
+            <!-- Background Image -->
+            <div class="absolute inset-0 z-0">
+                <img src="allfiles/hero section/bodybackground.jpg" alt="Background Photo" class="w-full h-full object-cover" loading="lazy" />
+                <div class="absolute inset-0 bg-white bg-opacity-60"></div>
+            </div>
+
+            <!-- Foreground Content -->
+            <div class="relative z-10 max-w-xl p-6 rounded-lg">
+                <h1 class="text-4xl font-extrabold text-blue-700">Explore Physics Concepts</h1>
+                <p class="mt-2 text-gray-800 font-medium">
+                    Dive into the fascinating world of physics with insights and resources from Nishant Mishra.
+                </p>
+                <button
+                    onclick="document.getElementById('moreContent').classList.toggle('hidden')"
+                    class="mt-4 px-6 py-2 bg-blue-700 hover:bg-blue-800 text-white rounded-full shadow transition"
+                    >
+                    Learn
+                </button>
+
+                <!-- Hidden content -->
+                <div id="moreContent" class="hidden mt-4 text-left bg-white bg-opacity-90 p-4 rounded shadow">
+                    <h2 class="text-xl font-bold text-blue-600">What You'll Learn</h2>
+                    <p class="mt-2 text-gray-700">
+                        You'll explore topics like Newton's Laws, Thermodynamics, Electromagnetism, Quantum Physics, and more. This section includes notes, videos, and practice questions to help you master the subject.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog -->
+        <section id="blog" class="p-6 mt-6 mx-4 bg-white rounded-lg shadow">
+            <h2 class="text-2xl font-bold mb-2 text-gray-800">Exploring the Wonders of Physics</h2>
+            <p class="text-gray-600 mb-4">
+                Blog posts, ideas, and theories by Nishant Mishra.
+            </p>
+
+        </section>
+
+
+        <div id="blog-section"></div>
+        <!--physics concepts-->
+        <section "physics Concepts">
+            <h2 class="text-2xl font-blod mb-2 text-grey-800">
+                Newton's law of motion
+            </h2>
+            pQNewton's laws of motion are three physical laws that describe the relationship between the motion of an object and the forces acting on it. These laws, which provide the basis for Newtonian mechanics, can be paraphrased as follows:
+            <ol>
+                <li>
+                    A body remains at rest, or in motion at a constant speed in a straight line, unless it is acted upon by a force.
+                </li>
+                <li>
+                    At any instant of time, the net force on a body is equal to the body's acceleration multiplied by its mass or, equivalently, the rate at which the body's momentum is changing with time.
+                </li>
+                <li>
+                    If two bodies exert forces on each other, these forces have the same magnitude but opposite directions.[1][2]
+                </li>
+            </ol>
+
+            The three laws of motion were first stated by Isaac Newton in his Philosophiæ Naturalis Principia Mathematica (Mathematical Principles of Natural Philosophy), originally published in 1687.[3] Newton used them to investigate and explain the motion of many physical objects and systems. In the time since Newton, new insights, especially around the concept of energy, built the field of classical mechanics on his foundations. Limitations to Newton's laws have also been discovered; new theories are necessary when objects move at very high speeds (special relativity), are very massive (general relativity), or are very small (quantum mechanics).
+        </pre>
+    </section>
+
+
+    <!-- Physics Gallery -->
+    <section id="physics" class="p-6 mt-6 mx-4 bg-white rounded-lg shadow">
+        <h2 class="text-2xl font-bold mb-4 text-gray-800">Physics Gallery</h2>
+        <div class="grid grid-cols-2 gap-4">
+            <img src="image1.jpg" class="rounded-xl shadow-md hover:scale-105 transition" alt="Physics 1" loading="lazy" />
+            <img src="image2.jpg" class="rounded-xl shadow-md hover:scale-105 transition" alt="Physics 2" loading="lazy" />
+            <img src="image3.jpg" class="rounded-xl shadow-md hover:scale-105 transition" alt="Physics 3" loading="lazy" />
+            <img src="image4.jpg" class="rounded-xl shadow-md hover:scale-105 transition" alt="Physics 4" loading="lazy" />
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="bg-blue-100 p-6 mt-8 mx-4 rounded-xl shadow-md">
+        <h3 class="text-lg font-semibold text-gray-800">Contact Us</h3>
+        <form>
+            <input type="text" placeholder="Enter your first name" class="w-full p-2 mt-3 rounded-md border border-gray-300" aria-label="First Name" />
+            <input type="email" placeholder="Enter your email address" class="w-full p-2 mt-3 rounded-md border border-gray-300" aria-label="Email" />
+            <textarea placeholder="Type your message here" class="w-full p-2 mt-3 rounded-md border border-gray-300" aria-label="Message"></textarea>
+            <button type="submit" class="mt-4 px-5 py-2 bg-blue-700 text-white rounded-full hover:bg-blue-800 transition">Submit Your Inquiry</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white p-6 mt-10 text-center rounded-t-lg">
+        <p class="mb-3">
+            <strong>Explore the fascinating world of physics today.</strong>
+        </p>
+        <div class="flex justify-center space-x-5 mb-3">
+            <a href="https://Facebook.com"><img src="facebook-icon.png" class="w-6 h-6" alt="Facebook" loading="lazy" /></a>
+            <a href="https://www.Instagram.com"><img src="instagram-icon.png" class="w-6 h-6" alt="Instagram" loading="lazy" /></a>
+            <a href="https:www.youtube.com"><img src="youtube-icon.png" class="w-6 h-6" alt="youtube" loading="lazy" /></a>
+            <a href="https://www.Twitter.com"><img src="x-icon.png" class="w-6 h-6" alt="Twitter" loading="lazy" /></a>
+        </div>
+        <p class="text-sm text-gray-300">
+            contactus@physicsbynishantmishra.com | 91+7254946716
+        </p>
+        <div class="mt-4">
+            <input type="email" placeholder="Your email for updates" class="w-full p-2 rounded-md text-gray-800" />
+            <button class="mt-2 w-full px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-md transition">Submit your information now</button>
+        </div>
+        <p class="mt-4 text-xs text-gray-400">
+            © <b>2025. All rights reserved.</b>
+        </p>
+
+
+
+        <div class="whatsapp-footer">
+            <a href="https://wa.me/917254946716" target="_blank" aria-label="Chat on WhatsApp">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Icon" />
+            </a>
+        </div>
+
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('max-h-0')) {
+                mobileMenu.classList.remove('max-h-0');
+                mobileMenu.classList.add('py-4');
+                mobileMenu.classList.add('max-h-96');
+            } else {
+                mobileMenu.classList.add('max-h-0');
+                mobileMenu.classList.remove('py-4');
+                mobileMenu.classList.remove('max-h-96');
+            }
+        });
+
+        const chapters = [{
+            title: "Chapter 1: newton's low of motion",
+            content: "Newton's laws of motion are three physical laws that describe the relationship between the motion of an object and the forces acting on it. These laws, which provide the basis for Newtonian mechanics, can be paraphrased as follows:...",
+
+            concept: "Newton's laws of motion describe the relationship between force, mass, and acceleration. Briefly, they state that an object at rest stays at rest, and an object in motion stays in motion with the same speed and direction unless acted upon by a force (First Law); that force equals mass times acceleration (Second Law); and that for every action, there's an equal and opposite reaction (Third Law). ",
+            pdf: "/files/ch1.pdf",
+        },
+            {
+                title: "Chapter 2:what is Thermodynamics",
+                content: "Thermodynamics is the study of the relations between heat, work, temperature, and energy. The laws of thermodynamics describe how the energy in a system changes and whether the system can perform useful work on its surroundings...",
+
+                concept: "Thermodynamics is the study of energy and its transformations, focusing on how heat and work interact with matter and its properties.",
+                pdf: "/files/ch2.pdf",
+            },
+            {
+                title: "Chapter 3: Electromagnetics induction",
+                content: "Electromagnetic or magnetic induction is the production of an electromotive force across an electrical conductor in a changing magnetic field. Michael Faraday is generally credited with the discovery of induction in 1831, and James Clerk Maxwell mathematically described it as Faraday's law of induction...",
+
+                concept: "Electromagnetic induction is the phenomenon where a changing magnetic field induces an electromotive force (EMF) or voltage in a conductor. This principle is the foundation for many electrical devices, including generators and transformers. When a conductor experiences a changing magnetic field, it results in a voltage being generated, which can then drive an electric current if the conductor is part of a closed circuit. ",
+                pdf: "/files/ch3.pdf",
+            },
+            {
+                title: "Chapter 4: Momentum and Collisions",
+                content: "In collisions, the total momentum of a system is always conserved, meaning it remains constant before and after the collision...",
+                concept: "Momentum and collisions are interconnected concepts in physics. Momentum, defined as mass times velocity, describes an object's motion, while collisions are events where objects exert forces on each other, causing changes in their motion. The principle of conservation of momentum dictates that in a closed system, the total momentum before a collision equals the total momentum after the collision. /Inelastic Collisions",
+                pdf: "/files/ch4.pdf",
+            },
+            {
+                title: "Chapter 5: Gravitation and Space",
+                content: "Gravity is a fundamental force in space, responsible for holding celestial bodies like planets and stars together, and influencing their movements...",
+
+                concept: "Gravitation, or gravity, is the fundamental force of attraction between any two objects with mass. In space, this force plays a crucial role in shaping the universe, from keeping planets in orbit around stars to holding galaxies together. Einstein's theory of general relativity explains gravity not as a force, but as the curvature of spacetime caused by the presence of mass and energy. ",
+
+                pdf: "/files/ch5.pdf",
+            }];
+
+        const colors = [
+            "#FFCDD2", "#F8BBD0", "#E1BEE7", "#D1C4E9", "#C5CAE9",
+            "#BBDEFB", "#B2EBF2", "#C8E6C9", "#DCEDC8", "#FFF9C4",
+            "#FFE0B2", "#FFCCBC", "#D7CCC8", "#CFD8DC"
+        ];
+
+        const blogSection = document.getElementById("blog-section");
+
+        chapters.forEach((chapter, idx) => {
+            const card = document.createElement("div");
+            card.className = "card";
+            card.id = `card-${idx}`;
+
+            // Random pastel background color
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            card.style.backgroundColor = randomColor;
+
+            card.innerHTML = `
+            <h2 style="font-weight: bold; color: black;">${chapter.title}</h2>
+            <p>${chapter.content}</p>
+            <p class="concept-text max-h-0" data-concept="${chapter.concept}"></p>
+            <a href="${chapter.pdf}" target="_blank">Download PDF</a>
+            <div class="toggle-btn" onclick="toggleConcept(event, ${idx})">
+            <i>&#9660;</i> <span>Show Concepts</span>
+            </div>
+            `;
+
+            blogSection.appendChild(card);
+        });
+
+        function toggleConcept(e, idx) {
+            const card = document.getElementById(`card-${idx}`);
+            const conceptText = card.querySelector(".concept-text");
+            const icon = card.querySelector("i");
+            const label = card.querySelector("span");
+            const isOpen = conceptText.classList.contains("max-h-0");
+
+            if (isOpen) {
+                conceptText.textContent = "Concepts: " + conceptText.dataset.concept;
+                conceptText.classList.remove("max-h-0");
+                conceptText.classList.add("max-h-40");
+                label.textContent = "Hide Concepts";
+                icon.style.transform = "rotate(180deg)";
+            } else {
+                conceptText.classList.remove("max-h-40");
+                conceptText.classList.add("max-h-0");
+                label.textContent = "Show Concepts";
+                icon.style.transform = "rotate(0deg)";
+            }
+        }
+
+    </script>
+
+</body>
+</html>
